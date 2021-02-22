@@ -1,0 +1,122 @@
+<div class="container ">
+
+    <div class="row">
+        <!-- div for left nav -->
+        <div class="col-2">
+            <div class="side-fixed-nav-ta">
+
+                <div class="sidenav">
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Clients</a>
+                    <a href="#">Contact</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- questions data loading from here -->
+        <div class="col-8 questions-tb">
+            <div class="fixed-scroll">
+                Search By:
+                <select [(ngModel)]="selectedFilter">
+                    <option *ngFor="let option of filterTypes" [value]="option.value">
+                        {{option.label}}
+                    </option>
+                </select>
+                <div class="search-bar">
+                    <input #myinput type="text" placeholder="Search by questions..." [(ngModel)]="name"
+                        (input)="filterItem(myinput.value)">
+                </div>
+            </div>
+            <div *ngIf="finalListDetails.length">
+                <h2 class="title">
+                    All Questions
+                </h2> <br>
+                Total Questions: {{totalQuestions.length}}
+
+                <!-- passing @Input eachQuestion data to custom component for 
+                     card view of each question along with images and authors -->
+                <div *ngFor="let eachQuestion of finalListDetails; let index = index">
+                    <stack-questn-details [eachQuestion]="eachQuestion"></stack-questn-details>
+                </div>
+
+            </div>
+            <div class="pagination" style="
+            display: block;
+            text-align: center;
+            padding: 30px;" *ngIf="!finalListDetails.length">
+                <h2> No Records found..</h2>
+                <p> Please reload for data..</p>
+            </div>
+
+            <!-- code for pagination -->
+            <div class="pagination">
+                <span style="cursor: pointer;">
+                    <button [disabled]="disablePrevBtn" class="primary" (click)="prev()">
+                        Previous
+                    </button>
+                </span>
+                <span style="cursor: pointer;">
+                    <button [disabled]="disableNxtBtn" (click)="next()" class="primary">
+                        Next
+                    </button>
+                </span>
+                <span>
+                    Page No: {{pageNumber}} ;
+                    Total Pages: {{totalQuestions.length /3}}
+
+                    <button type="button" class="refresh-btn" (click)="ngOnInit()">
+                        <img style="height: 17px;" src="http://simpleicon.com/wp-content/uploads/refresh.png"> Refresh
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <!-- right fixed nav loading from here -->
+        <div class="col-2">
+            <div class="side-adv-tab">
+                <div class="card">
+                    <div class="card-header">
+                        Tip
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            just click on Questions to find answers..
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="side-adv-tab"> -->
+            <div class="card">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        reload if data is not appeared..
+                    </blockquote>
+                </div>
+            </div>
+            <!-- </div> -->
+
+            <!-- <div class="side-adv-tab"> -->
+            <div class="card">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        no, libraries included..
+                    </blockquote>
+                </div>
+            </div>
+            <!-- </div> -->
+
+            <!-- <div class="side-adv-tab"> -->
+            <div class="card">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        Data is shown with, custom search bar and paginations..
+                    </blockquote>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<!-- repeating this component for every recieved question using @Input 
+    for card view along with images and authors -->
+
+<div class="main-scren card text-center">
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="header"><a [href]="eachQuestion.link">{{eachQuestion.title}}</a></div>
+                <div class="col-9">
+                    <div class="card-tags">
+                        <p class="" *ngIf="eachQuestion.is_answered">Answerd</p>
+                        <p class="" *ngIf="!eachQuestion.is_answered">Have to be Answered</p>
+                        <br>
+                        Tags: <a href="#" class="btn btn-primary" *ngFor="let eachTag of eachQuestion.tags;"
+                            class="tagBlock">{{eachTag}}</a>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card-image">
+                        <p class="card-text"> {{eachQuestion.owner.display_name}} </p>
+                        <img [src]="eachQuestion.owner.profile_image" class="card-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

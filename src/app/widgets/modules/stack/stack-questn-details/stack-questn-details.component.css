@@ -1,0 +1,36 @@
+.main-screen{
+    margin-left: 300px; /* Same as the width of the sidenav */
+}
+
+.tagBlock{
+    padding: 6px;
+    display: inline;
+    /* border: 2px solid #140c0c; */
+    border-radius: 16px;
+    background-color: #c8deff;
+    color: black;
+    text-decoration: none;
+}
+
+div.header {
+    text-decoration: none;
+    text-align: left;
+}
+
+.card-image{
+
+    text-align-last: end;
+}
+
+.card-image img{
+    height: 60px;
+    width: 60px;
+}
+
+.card-tags{
+    text-align: left;
+}
+
+.card-body{
+    padding: 0.5rem 0.5em;
+}
